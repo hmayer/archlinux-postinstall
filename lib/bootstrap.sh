@@ -22,12 +22,11 @@ configgit() {
 }
 
 upgrade-system
-installpkg vim /usr/bin/vim
-installpkg vi /usr/bin/vi
 installpkg git /usr/bin/git
 installpkg fakeroot /usr/bin/fakeroot
 installpkg binutils /usr/bin/strip
 installpkg make /usr/bin/make
 installpkg gcc /usr/bin/gcc
 installpkg openssh /usr/bin/ssh
+installpkg dialog /usr/bin/dialog
 configgit
