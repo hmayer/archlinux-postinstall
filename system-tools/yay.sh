@@ -11,7 +11,7 @@ YAY_REPO="https://aur.archlinux.org/yay.git"
 installyay() {
 	${GIT} clone ${YAY_REPO} ${AP_TMP}/yay
 	cd ${AP_TMP}/yay
-	makepkg -si
+	makepkg -si --noconfirm
 }
 
 installyay
