@@ -9,20 +9,26 @@ CURRENTDIR=$(dirname $(readlink -f $0))
 . ${CURRENTDIR}/../lib/helpers.sh
 
 # Installing zsh properly
-arch-install zsh
-arch-install ttf-meslo-nerd-font-powerlevel10k
-arch-install zsh-theme-powerlevel10k
-arch-install zsh-autosuggestions
-arch-install zsh-completions
+arch-install zsh /usr/bin/zsh
+arch-install ttf-meslo-nerd-font-powerlevel10k /usr/share/fonts/TTF/MesloLGS-NF-Regular.ttf
+arch-install zsh-theme-powerlevel10k /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+arch-install zsh-autosuggestions /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+arch-install zsh-completions /usr/share/doc/zsh-completions/README.md
+arch-install zsh-thefuck-git /usr/share/zsh/plugins/zsh-thefuck-git/zsh-thefuck.plugin.zsh
+arch-install exa /usr/bin/exa
+arch-install bat /usr/bin/bat
 
-echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
-echo 'source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
+echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ${HOME}/.zshrc
+echo 'source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ${HOME}/.zshrc
+echo 'source /usr/share/zsh/plugins/zsh-thefuck-git/zsh-thefuck.plugin.zsh' >> ${HOME}/.zshrc
 
-cat >> ~/.zshrc.test <<EOF
-export PATH="\${PATH}:\${HOME}/bin"
+cat >> ${HOME}/.zshrc <<EOF
+export PATH="\${PATH}:\${HOME}/bin:\${HOME}/.cargo/bin"
 
-alias ls='ls --color=auto'
 alias upgrade='yay -Syu'
+alias ls='exa --icons -lh'
+alias cat='bat'
+alias vim='lvim'
 
 typeset -g -A key
 
@@ -65,8 +71,8 @@ fi
 
 
 h=()
-if [[ -r ~/.ssh/config ]]; then
-  h=(\$h \${\${\${(@M)\${(f)"\$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+if [[ -r ${HOME}/.ssh/config ]]; then
+  h=(\$h \${\${\${(@M)\${(f)"\$(cat ${HOME}/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
 fi
 if [[ \$#h -gt 0 ]]; then
   zstyle ':completion:*:ssh:*' hosts \$h

@@ -29,5 +29,5 @@ installpkg fakeroot /usr/bin/fakeroot
 installpkg binutils /usr/bin/strip
 installpkg make /usr/bin/make
 installpkg gcc /usr/bin/gcc
-installpkg ssh /usr/bin/ssh
+installpkg openssh /usr/bin/ssh
 configgit

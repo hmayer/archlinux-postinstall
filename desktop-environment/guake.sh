@@ -10,7 +10,7 @@ GSETTINGS=/usr/bin/gsettings
 . ${CURRENTDIR}/../lib/helpers.sh
 
 # Installing guake package
-arch-install guake
+arch-install guake /usr/bin/guake
 
 # Set F12 as dropdown key in GNOME global shorcut (needed in wayland environment)
 ${GSETTINGS} set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"

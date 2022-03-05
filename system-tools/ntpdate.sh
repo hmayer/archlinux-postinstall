@@ -9,6 +9,7 @@ CURRENTDIR=$(dirname $(readlink -f $0))
 . ${CURRENTDIR}/../lib/helpers.sh
 
 # Yes we need cron
+arch-install patch
 arch-install vixie-cron /usr/bin/cron #i like this crond implementation
 arch-install ntpdate /usr/bin/ntpdate
 
